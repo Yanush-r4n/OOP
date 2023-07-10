@@ -20,6 +20,7 @@ public class Main {
 
         for (Action participant : participants) {
             for (Obstacle obstacle : obstacles) {
+//                if (participant.isEliminated()) continue;
                 if (obstacle instanceof RunningDistance) {
                     participant.run(obstacle);
                 } else {

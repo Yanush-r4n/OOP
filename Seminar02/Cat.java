@@ -5,8 +5,14 @@ public class Cat implements Action {
     final int maxRunningLength = 600;
     final int maxJumpingHeight = 120;
 
+    public boolean isEliminated = false;
+
     public Cat(String name) {
         this.name = name;
+    }
+
+    public boolean isEliminated() {
+        return isEliminated;
     }
 
     @Override
@@ -15,6 +21,7 @@ public class Cat implements Action {
         if (length > maxRunningLength) {
             System.out.println("Киця " + name + " выдохлась и НЕ добежала до конца " + length +
                     " м.");
+            isEliminated = true;
         } else if (length < 0) {
             System.out.println("Киця " + name + " не смогла развернуться назад и побежать в другую сторону.");
         } else if (length == 0) {
@@ -30,6 +37,7 @@ public class Cat implements Action {
         if (height > maxJumpingHeight) {
             System.out.println("Киця " + name + " НЕ смогла прерыгнуть " + height +
                     " см и вдаривлась о препятствие.");
+            isEliminated = true;
         } else if (height < 0) {
             System.out.println("Киця " + name + " что, вниз закопаться должна?");
         } else if (height == 0) {

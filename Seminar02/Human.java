@@ -5,8 +5,14 @@ public class Human implements Action {
     final int maxRunningLength = 4_000;
     final int maxJumpingHeight = 60;
 
+    public boolean isEliminated = false;
+
     public Human(String name) {
         this.name = name;
+    }
+
+    public boolean isEliminated() {
+        return isEliminated;
     }
 
     @Override
@@ -15,6 +21,7 @@ public class Human implements Action {
         if (length > maxRunningLength) {
             System.out.println("Чел " + name + " выдохся и НЕ добежал до конца " + length +
                     " м.");
+            isEliminated = true;
         } else if (length < 0) {
             System.out.println("Чел " + name + " не смог развернуться назад и побежать в другую сторону.");
         } else if (length == 0) {
@@ -30,6 +37,7 @@ public class Human implements Action {
         if (height > maxJumpingHeight) {
             System.out.println("Чел " + name + " НЕ смог прерыгнуть " + height +
                 " см и вдаривсь о препятствие.");
+            isEliminated = true;
         } else if (height < 0) {
             System.out.println("Чел " + name + " что, вниз закопаться должен?");
         } else if (height == 0) {

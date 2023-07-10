@@ -5,8 +5,14 @@ public class Robot implements Action {
     final int maxRunningLength = 10_000;
     final int maxJumpingHeight = 180;
 
+    public boolean isEliminated = false;
+
     public Robot(String name) {
         this.name = name;
+    }
+
+    public boolean isEliminated() {
+        return isEliminated;
     }
 
     @Override
@@ -15,6 +21,7 @@ public class Robot implements Action {
         if (length > maxRunningLength) {
             System.out.println("Консерва " + name + " выдохлась и НЕ добежала до конца " + length +
                     " м.");
+            isEliminated = true;
         } else if (length < 0) {
             System.out.println("Консерва " + name + " не смогла развернуться назад и побежать в другую сторону.");
         } else if (length == 0) {
@@ -30,6 +37,7 @@ public class Robot implements Action {
         if (height > maxJumpingHeight) {
             System.out.println("Консерва " + name + " НЕ смогла прерыгнуть " + height +
                     " см и вдаривлась о препятствие.");
+            isEliminated = true;
         } else if (height < 0) {
             System.out.println("Консерва " + name + " что, вниз закопаться должна?");
         } else if (height == 0) {
